@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enfermería Quito — 10 Opciones</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Calibri,Arial,sans-serif;background:#eef2f7;color:#2c3e50;line-height:1.5}
+.hero{background:linear-gradient(135deg,#1a5276,#2e86c1);color:#fff;padding:40px 20px;text-align:center}
+.hero h1{font-size:2em;margin-bottom:6px}
+.hero p{font-size:1.05em;opacity:.9}
+.container{max-width:960px;margin:0 auto;padding:16px 20px}
+h2.seccion{font-size:1.3em;margin:24px 0 14px;border-left:5px solid #2e86c1;padding-left:12px}
+
+/* ── Filtros ── */
+.filtros{text-align:center;margin-bottom:24px}
+.filtros button{background:#fff;border:2px solid #2e86c1;color:#2e86c1;padding:7px 16px;margin:3px;border-radius:20px;cursor:pointer;font-weight:600;font-size:.85em;transition:.25s}
+.filtros button.activo,.filtros button:hover{background:#2e86c1;color:#fff}
+
+/* ── Tabla resumen ── */
+.tabla-wrap{overflow-x:auto;margin:0 0 28px}
+.tabla-wrap table{width:100%;border-collapse:collapse;font-size:.88em;min-width:620px}
+.tabla-wrap th{background:#2c3e50;color:#fff;padding:10px 10px;text-align:left;white-space:nowrap}
+.tabla-wrap td{padding:9px 10px;border-bottom:1px solid #e0e6ed}
+.tabla-wrap tr:nth-child(even){background:#f5f7fa}
+.tag{display:inline-block;padding:2px 10px;border-radius:10px;font-size:.78em;font-weight:600}
+.tag-pub{background:#d5f5e3;color:#1a7a42}
+.tag-priv{background:#d6eaf8;color:#1a5276}
+.tag-inst{background:#fdebd0;color:#935116}
+
+/* ── Targetas ── */
+#targetas{display:flex;flex-direction:column;gap:22px}
+.targeta{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);overflow:hidden}
+.targeta-header{color:#fff;padding:16px 22px;display:flex;align-items:center;gap:10px}
+.targeta-header h2{font-size:1.15em;flex:1;min-width:0}
+.targeta-header .num{background:rgba(255,255,255,.2);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1em;flex-shrink:0}
+.targeta-body{padding:18px 22px 22px}
+
+/* ── Grid resumen ── */
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
+.grid5-item{background:#f5f7fa;border-radius:8px;padding:10px 8px;text-align:center;border-left:4px solid #2e86c1}
+.grid5-item .lbl{font-size:.7em;text-transform:uppercase;color:#7f8c8d;letter-spacing:.4px}
+.grid5-item .val{font-size:1.05em;font-weight:700;margin-top:2px}
+.grid5-item.destacado{border-left-color:#e67e22}
+.grid5-item.destacado .val{color:#e67e22}
+@media(max-width:600px){.grid5{grid-template-columns:repeat(3,1fr)}}
+
+/* ── Detalles ── */
+.detalles h3{font-size:.95em;margin-bottom:6px;border-bottom:2px solid #eef2f7;padding-bottom:5px}
+.detalles ul{list-style:none}
+.detalles ul li{padding:3px 0 3px 18px;position:relative;font-size:.92em}
+.detalles ul li::before{content:"\2022";position:absolute;left:2px;color:#2e86c1;font-weight:700}
+
+/* ── Pros/Cons ── */
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.p-box{border-radius:8px;padding:12px 14px}
+.p-box h3{font-size:.9em;margin-bottom:5px}
+.p-box ul{list-style:none}
+.p-box ul li{padding:2px 0 2px 18px;position:relative;font-size:.88em}
+.pros{background:#eafaf1}
+.pros h3{color:#1e8449}
+.pros ul li::before{content:"\2713";position:absolute;left:0;color:#1e8449;font-weight:700}
+.cons{background:#fef9e7}
+.cons h3{color:#b7950b}
+.cons ul li::before{content:"\26A0";position:absolute;left:0;color:#e67e22}
+@media(max-width:500px){.pc{grid-template-columns:1fr}}
+
+/* ── Contacto ── */
+.contacto{background:#f0f4f8;border-radius:8px;padding:12px 14px;font-size:.88em;line-height:1.7}
+.contacto strong{color:#1a5276}
+
+/* ── Footer ── */
+footer{text-align:center;padding:28px 20px;color:#7f8c8d;font-size:.82em}
+
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Enfermería en Quito</h1>
+  <p>10 opciones con precios, tiempos e información completa</p>
+  <p style="font-size:.8em;opacity:.7;margin-top:4px">Mayo 2026</p>
+</div>
+
+<div class="container">
+
+  <!-- Filtros -->
+  <div class="filtros" id="filtros">
+    <button class="activo" data-f="todo">Todas</button>
+    <button data-f="pub">Públicas</button>
+    <button data-f="priv">Privadas</button>
+    <button data-f="inst">Institutos</button>
+    <button data-f="rapida">Rápidas (≤3 años)</button>
+    <button data-f="eco">Económicas</button>
+  </div>
+
+  <!-- Resumen -->
+  <h2 class="seccion">Resumen general</h2>
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Institución</th><th>Tipo</th><th>Título</th><th>Duración</th><th>Costo aprox.</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Instituto Tecnológico Cordillera</td><td><span class="tag tag-inst">Instituto</span></td><td>Tecnólogo</td><td>2 años</td><td><strong>$872</strong> total</td></tr>
+        <tr><td>2</td><td>Universidad Central del Ecuador</td><td><span class="tag tag-pub">Pública</span></td><td>Licenciatura</td><td>4.5–5 años</td><td><strong>$150–$300</strong> total</td></tr>
+        <tr><td>3</td><td>Universidad Politécnica Salesiana</td><td><span class="tag tag-priv">Privada</span></td><td>Licenciatura</td><td>4.5 años</td><td>$1,300–$1,600/sem</td></tr>
+        <tr><td>4</td><td>Universidad Internacional del Ecuador</td><td><span class="tag tag-priv">Privada</span></td><td>Licenciatura</td><td>4.5 años</td><td>$1,400–$1,700/sem</td></tr>
+        <tr><td>5</td><td>Universidad de las Américas</td><td><span class="tag tag-priv">Privada</span></td><td>Licenciatura</td><td>4.5 años</td><td>$1,500–$1,800/sem</td></tr>
+        <tr><td>6</td><td>Universidad Tecnológica Equinoccial</td><td><span class="tag tag-priv">Privada</span></td><td>Licenciatura</td><td>4.5 años</td><td>$1,200–$1,500/sem</td></tr>
+        <tr><td>7</td><td>Universidad San Francisco de Quito</td><td><span class="tag tag-priv">Privada</span></td><td>Licenciatura</td><td>4.5 años</td><td>$2,000–$2,500/sem</td></tr>
+        <tr><td>8</td><td>Pontificia Universidad Católica del Ecuador</td><td><span class="tag tag-priv">Privada</span></td><td>Licenciatura</td><td>4.5 años</td><td>$1,400/sem</td></tr>
+        <tr><td>9</td><td>Universidad de los Hemisferios</td><td><span class="tag tag-priv">Privada</span></td><td>Licenciatura</td><td>4.5 años</td><td>$1,000–$1,300/sem</td></tr>
+        <tr><td>10</td><td>Instituto Cruz Roja Ecuatoriana</td><td><span class="tag tag-inst">Instituto</span></td><td>Tecnólogo</td><td>2.5 años</td><td><strong>$600–$900</strong> total</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Targetas -->
+  <div id="targetas">
+
+    <!-- 1 ── Cordillera -->
+    <div class="targeta" data-c="inst rapida eco">
+      <div class="targeta-header" style="background:#e67e22">
+        <h2>1. Instituto Tecnológico Universitario Cordillera</h2>
+        <div class="num">1</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Instituto</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Tecnólogo/a</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">2 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">4</div></div>
+          <div class="grid5-item destacado"><div class="lbl">Costo total</div><div class="val">$872.50</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Carrera tecnológica de rápida inserción laboral.</li>
+            <li>Costo total de $872.50 (matrícula + aranceles de toda la carrera).</li>
+            <li>Título de Tecnólogo/a en Enfermería, válido para trabajar en clínicas y hospitales.</li>
+            <li>Metodología práctica con laboratorios de simulación clínica.</li>
+            <li>Horarios flexibles: diurno y vespertino.</li>
+            <li>Convenios con casas de salud para prácticas preprofesionales.</li>
+            <li>Posibilidad de complementar a Licenciatura en 2 años más.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Opción más rápida: en 2 años obtienes título</li><li>Costo más bajo: menos de $900 toda la carrera</li><li>Inicio inmediato, sin examen restrictivo</li><li>Alta demanda laboral de tecnólogos</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Título de Tecnólogo, NO Licenciatura</li><li>Requiere 2 años más para Licenciatura</li><li>Menor reconocimiento internacional</li><li>Oportunidades de ascenso más limitadas</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Av. de la Prensa N57-90 y Vía Línea Férrea<br><strong>Teléfono:</strong> 1800 267 345 / (02) 2278-900<br><strong>Web:</strong> <a href="https://www.cordillera.edu.ec" target="_blank">www.cordillera.edu.ec</a><br><strong>Email:</strong> info@cordillera.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 2 ── Central -->
+    <div class="targeta" data-c="pub eco">
+      <div class="targeta-header" style="background:#2c3e50">
+        <h2>2. Universidad Central del Ecuador</h2>
+        <div class="num">2</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Pública</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5–5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9–10</div></div>
+          <div class="grid5-item destacado"><div class="lbl">Costo total</div><div class="val">$150–$300</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Universidad pública más grande y prestigiosa del Ecuador.</li>
+            <li>Costo casi simbólico: entre $15 y $30 por ciclo (valor solidario).</li>
+            <li>Título de Licenciado/a en Enfermería con validez nacional e internacional.</li>
+            <li>Facultad de Ciencias Médicas con hospital-escuela propio.</li>
+            <li>Alto nivel académico y cuerpo docente con amplia experiencia.</li>
+            <li>Infraestructura completa: laboratorios, simuladores, biblioteca.</li>
+            <li>Investigación y vinculación con la comunidad.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Costo más bajo para Licenciatura: &lt;$300 total</li><li>Prestigio académico nacional</li><li>Hospital-escuela para prácticas</li><li>Título de Licenciatura directo</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Examen de ingreso muy competitivo</li><li>Proceso de admisión largo</li><li>Duración: 5 años</li><li>Horarios mayormente diurnos</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Ciudadela Universitaria, Av. América y Av. Universitaria<br><strong>Teléfono:</strong> (02) 2525-232 / (02) 2230-142<br><strong>Web:</strong> <a href="https://www.uce.edu.ec" target="_blank">www.uce.edu.ec</a><br><strong>Email:</strong> admision@uce.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 3 ── UPS -->
+    <div class="targeta" data-c="priv">
+      <div class="targeta-header" style="background:#2980b9">
+        <h2>3. Universidad Politécnica Salesiana (UPS)</h2>
+        <div class="num">3</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Privada</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9</div></div>
+          <div class="grid5-item"><div class="lbl">Costo/sem</div><div class="val">$1,300–$1,600</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Universidad privada con enfoque social y humanista.</li>
+            <li>Título: Licenciado/a en Enfermería.</li>
+            <li>Convenios con hospitales públicos y privados para prácticas.</li>
+            <li>Laboratorios de simulación clínica de última generación.</li>
+            <li>Programas de becas y descuentos por rendimiento académico.</li>
+            <li>Opciones de financiamiento directo con la universidad.</li>
+            <li>Campus en el norte y sur de Quito.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Buena relación costo-calidad</li><li>Valores institucionales sólidos</li><li>Becas hasta 50% descuento</li><li>Dos campus en Quito</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Costo semestral medio-alto</li><li>Examen de admisión</li><li>Duración estándar 9 semestres</li><li>Materiales no incluidos</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Campus El Girón: Av. 12 de Octubre N24-22 y Wilson / Campus Sur: Av. Rumichaca Ñan<br><strong>Teléfono:</strong> (02) 3962-800<br><strong>Web:</strong> <a href="https://www.ups.edu.ec" target="_blank">www.ups.edu.ec</a><br><strong>Email:</strong> admision@ups.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 4 ── UIDE -->
+    <div class="targeta" data-c="priv">
+      <div class="targeta-header" style="background:#8e44ad">
+        <h2>4. Universidad Internacional del Ecuador (UIDE)</h2>
+        <div class="num">4</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Privada</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9</div></div>
+          <div class="grid5-item"><div class="lbl">Costo/sem</div><div class="val">$1,400–$1,700</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Universidad internacional con programas de intercambio.</li>
+            <li>Título: Licenciado/a en Enfermería.</li>
+            <li>Convenios internacionales para pasantías en el extranjero.</li>
+            <li>Clases bilingües (español-inglés) disponibles.</li>
+            <li>Campus moderno con laboratorios equipados.</li>
+            <li>Jornadas diurnas y vespertinas.</li>
+            <li>Programa de becas por mérito académico y deportivo.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Enfoque internacional</li><li>Horarios flexibles</li><li>Infraestructura moderna</li><li>Red de contactos internacional</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Costo semestral elevado</li><li>Menor tradición en salud</li><li>Admisión selectiva</li><li>Aranceles extracurriculares</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Av. Simón Bolívar y Vía a Nayón<br><strong>Teléfono:</strong> (02) 2985-600<br><strong>Web:</strong> <a href="https://www.uide.edu.ec" target="_blank">www.uide.edu.ec</a><br><strong>Email:</strong> admisiones@uide.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 5 ── UDLA -->
+    <div class="targeta" data-c="priv">
+      <div class="targeta-header" style="background:#c0392b">
+        <h2>5. Universidad de las Américas (UDLA)</h2>
+        <div class="num">5</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Privada</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9</div></div>
+          <div class="grid5-item"><div class="lbl">Costo/sem</div><div class="val">$1,500–$1,800</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Una de las universidades privadas más prestigiosas del país.</li>
+            <li>Título: Licenciado/a en Enfermería.</li>
+            <li>Campus UDLA Park con instalaciones de primer nivel.</li>
+            <li>Hospital de simulación con tecnología de punta.</li>
+            <li>Convenios con universidades de EE.UU. y Europa.</li>
+            <li>Alta empleabilidad de sus graduados.</li>
+            <li>Becas por rendimiento académico hasta 70%.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Prestigio nacional</li><li>Instalaciones de primer nivel</li><li>Alta empleabilidad</li><li>Becas hasta 70%</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Costo semestral alto</li><li>Admisión competitiva</li><li>Acceso requiere vehículo</li><li>Duración 9 semestres + internado</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Vía a Nayón, Redondel del CIS<br><strong>Teléfono:</strong> (02) 3981-000<br><strong>Web:</strong> <a href="https://www.udla.edu.ec" target="_blank">www.udla.edu.ec</a><br><strong>Email:</strong> informacion@udla.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 6 ── UTE -->
+    <div class="targeta" data-c="priv eco">
+      <div class="targeta-header" style="background:#16a085">
+        <h2>6. Universidad Tecnológica Equinoccial (UTE)</h2>
+        <div class="num">6</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Privada</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9</div></div>
+          <div class="grid5-item"><div class="lbl">Costo/sem</div><div class="val">$1,200–$1,500</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Universidad con amplia trayectoria en ciencias de la salud.</li>
+            <li>Título: Licenciado/a en Enfermería.</li>
+            <li>Campus Matriz y Campus Occidental en Quito.</li>
+            <li>Facultad de Ciencias de la Salud con laboratorios especializados.</li>
+            <li>Convenios con el Ministerio de Salud Pública para prácticas.</li>
+            <li>Becas internas y convenios corporativos.</li>
+            <li>Orientación a la investigación en salud.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Privada más económica para Enfermería</li><li>Dos campus en Quito</li><li>Buena relación calidad-precio</li><li>Tradición en ciencias de la salud</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Infraestructura más antigua</li><li>Menor reconocimiento internacional</li><li>Examen de admisión</li><li>Laboratorios requieren actualización</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Campus Matriz: Av. Mariscal Sucre S/N y Av. Occidental<br><strong>Teléfono:</strong> (02) 2998-200<br><strong>Web:</strong> <a href="https://www.ute.edu.ec" target="_blank">www.ute.edu.ec</a><br><strong>Email:</strong> admisiones@ute.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 7 ── USFQ -->
+    <div class="targeta" data-c="priv">
+      <div class="targeta-header" style="background:#7f8c8d">
+        <h2>7. Universidad San Francisco de Quito (USFQ)</h2>
+        <div class="num">7</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Privada</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9</div></div>
+          <div class="grid5-item"><div class="lbl">Costo/sem</div><div class="val">$2,000–$2,500</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Universidad de élite con estándares internacionales.</li>
+            <li>Título: Licenciado/a en Enfermería.</li>
+            <li>Colegio de Ciencias de la Salud (COCSA) de alto nivel.</li>
+            <li>Hospital de los Valles como hospital-escuela.</li>
+            <li>Investigación de punta en salud.</li>
+            <li>Programa de Artes Liberales: formación integral.</li>
+            <li>Red de contactos profesionales de alto nivel.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Máximo prestigio académico</li><li>Estándares internacionales</li><li>Hospital-escuela propio</li><li>Red de exalumnos influyente</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Costo más alto de todas</li><li>Admisión muy selectiva</li><li>Exigencias elevadas</li><li>Ubicación en Cumbayá</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Vía Interoceánica y Vía a Nayón, Cumbayá<br><strong>Teléfono:</strong> (02) 2971-700<br><strong>Web:</strong> <a href="https://www.usfq.edu.ec" target="_blank">www.usfq.edu.ec</a><br><strong>Email:</strong> admisiones@usfq.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 8 ── PUCE -->
+    <div class="targeta" data-c="priv">
+      <div class="targeta-header" style="background:#1a5276">
+        <h2>8. Pontificia Universidad Católica del Ecuador (PUCE)</h2>
+        <div class="num">8</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Privada</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9</div></div>
+          <div class="grid5-item"><div class="lbl">Costo/sem</div><div class="val">$1,400</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Universidad privada con más de 75 años de trayectoria.</li>
+            <li>Título: Licenciado/a en Enfermería.</li>
+            <li>Facultad de Enfermería con laboratorios de simulación.</li>
+            <li>Convenios con hospitales públicos y privados.</li>
+            <li>Formación con valores humanistas y éticos.</li>
+            <li>Programas de becas y ayudas económicas.</li>
+            <li>Vinculación con la comunidad y proyectos sociales.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Prestigio institucional sólido</li><li>Formación humanista integral</li><li>Red de contactos amplia</li><li>Becas por mérito y condición socioeconómica</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Costo semestral elevado</li><li>Instalaciones antiguas</li><li>Examen de admisión</li><li>Horarios limitados</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Av. 12 de Octubre N24-75 y Av. Orellana<br><strong>Teléfono:</strong> (02) 2991-700<br><strong>Web:</strong> <a href="https://www.puce.edu.ec" target="_blank">www.puce.edu.ec</a><br><strong>Email:</strong> admision@puce.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 9 ── Hemisferios -->
+    <div class="targeta" data-c="priv eco">
+      <div class="targeta-header" style="background:#27ae60">
+        <h2>9. Universidad de los Hemisferios</h2>
+        <div class="num">9</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Privada</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Licenciatura</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">4.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">9</div></div>
+          <div class="grid5-item"><div class="lbl">Costo/sem</div><div class="val">$1,000–$1,300</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Universidad privada con enfoque en formación personalizada.</li>
+            <li>Título: Licenciado/a en Enfermería.</li>
+            <li>Grupos reducidos: atención personalizada a cada estudiante.</li>
+            <li>Laboratorios de ciencias de la salud.</li>
+            <li>Convenios de prácticas en clínicas y hospitales de Quito.</li>
+            <li>Programa de becas internas.</li>
+            <li>Horarios: diurno y vespertino.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Privada más económica para Licenciatura</li><li>Grupos reducidos</li><li>Atención personalizada</li><li>Horarios flexibles</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Menor reconocimiento</li><li>Infraestructura pequeña</li><li>Red de contactos limitada</li><li>Pocos intercambios internacionales</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Av. Interoceánica Km. 3.5, Cumbayá<br><strong>Teléfono:</strong> (02) 2372-200<br><strong>Web:</strong> <a href="https://www.uhemisferios.edu.ec" target="_blank">www.uhemisferios.edu.ec</a><br><strong>Email:</strong> admisiones@uhemisferios.edu.ec</div>
+      </div>
+    </div>
+
+    <!-- 10 ── Cruz Roja -->
+    <div class="targeta" data-c="inst rapida eco">
+      <div class="targeta-header" style="background:#e74c3c">
+        <h2>10. Instituto Tecnológico Cruz Roja Ecuatoriana</h2>
+        <div class="num">10</div>
+      </div>
+      <div class="targeta-body">
+        <div class="grid5">
+          <div class="grid5-item"><div class="lbl">Tipo</div><div class="val">Instituto</div></div>
+          <div class="grid5-item"><div class="lbl">Título</div><div class="val">Tecnólogo/a</div></div>
+          <div class="grid5-item"><div class="lbl">Duración</div><div class="val">2.5 años</div></div>
+          <div class="grid5-item"><div class="lbl">Semestres</div><div class="val">5</div></div>
+          <div class="grid5-item destacado"><div class="lbl">Costo total</div><div class="val">$600–$900</div></div>
+        </div>
+        <div class="detalles">
+          <h3>Detalles destacados</h3>
+          <ul>
+            <li>Institución con más de 100 años de trayectoria humanitaria.</li>
+            <li>Título: Tecnólogo/a en Enfermería.</li>
+            <li>Formación práctica intensiva en campo.</li>
+            <li>Convenio directo con la Cruz Roja Ecuatoriana para prácticas.</li>
+            <li>Costo solidario, uno de los más bajos del mercado.</li>
+            <li>Enfoque en atención prehospitalaria y emergencias.</li>
+            <li>Posibilidad de continuar estudios hacia Licenciatura.</li>
+          </ul>
+        </div>
+        <div class="pc">
+          <div class="p-box pros"><h3>Ventajas</h3><ul><li>Costo más bajo: &lt;$900 total</li><li>Formación práctica de calidad</li><li>Prestigio de la Cruz Roja</li><li>Especialización en emergencias</li><li>Corta duración: 2.5 años</li></ul></div>
+          <div class="p-box cons"><h3>Desventajas</h3><ul><li>Título de Tecnólogo</li><li>Menor reconocimiento académico</li><li>Instalaciones modestas</li><li>Enfoque limitado</li></ul></div>
+        </div>
+        <div class="contacto"><strong>Dirección:</strong> Av. Colón N9-59 y Av. 6 de Diciembre<br><strong>Teléfono:</strong> (02) 2567-800<br><strong>Web:</strong> <a href="https://www.cruzrojaecuador.org" target="_blank">www.cruzrojaecuador.org</a><br><strong>Email:</strong> formacion@cruzroja.org.ec</div>
+      </div>
+    </div>
+
+  </div><!-- /targetas -->
+
+  <!-- Recomendaciones -->
+  <h2 class="seccion">Recomendaciones segun tu prioridad</h2>
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Si tu prioridad es...</th><th>Elige...</th><th>Por que</th></tr></thead>
+      <tbody>
+        <tr><td>Ahorrar al maximo</td><td><strong>U. Central o Cruz Roja</strong></td><td>Costo minimo: $150 a $900 total</td></tr>
+        <tr><td>Terminar rapido</td><td><strong>Cordillera o Cruz Roja</strong></td><td>En 2 a 2.5 anos sales a trabajar</td></tr>
+        <tr><td>Licenciatura economica</td><td><strong>UTE, UPS o Hemisferios</strong></td><td>Privadas desde $1,000/semestre</td></tr>
+        <tr><td>Prestigio maximo</td><td><strong>USFQ o UDLA</strong></td><td>Alto reconocimiento nacional</td></tr>
+        <tr><td>Buen balance calidad-precio</td><td><strong>UTE o PUCE</strong></td><td>Tradicion + costo moderado</td></tr>
+        <tr><td>Horarios flexibles</td><td><strong>UIDE, Hemisferios o Cordillera</strong></td><td>Jornadas vespertinas y fines de semana</td></tr>
+        <tr><td>Formacion internacional</td><td><strong>UIDE o USFQ</strong></td><td>Programas de intercambio y convenios</td></tr>
+        <tr><td>Emergencias y desastres</td><td><strong>Cruz Roja Ecuatoriana</strong></td><td>Especializacion en atencion humanitaria</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  Documento generado con informacion recopilada en mayo 2026. Los precios pueden variar.<br>
+  Realizado por darkgalz.
+</footer>
+
+<script>
+document.getElementById('filtros').addEventListener('click', function(e){
+  var btn = e.target.closest('button');
+  if(!btn) return;
+  var f = btn.getAttribute('data-f');
+  if(!f) return;
+  var btns = this.querySelectorAll('button');
+  for(var i=0;i<btns.length;i++) btns[i].classList.remove('activo');
+  btn.classList.add('activo');
+  var cards = document.querySelectorAll('.targeta');
+  for(var i=0;i<cards.length;i++){
+    if(f==='todo'){
+      cards[i].style.display = 'block';
+    }else{
+      var cats = cards[i].getAttribute('data-c') || '';
+      cards[i].style.display = cats.indexOf(f)===-1 ? 'none' : 'block';
+    }
+  }
+});
+</script>
+</body>
+</html>
